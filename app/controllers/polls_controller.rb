@@ -25,7 +25,9 @@ class PollsController < ApplicationController
   # POST /polls
   # POST /polls.json
   def create
-    create_params = poll_params.merge(:user_id => params[:user_id])
+    Poll.where(:rater_id => current_user.id).delete_all
+
+    create_params = poll_params.merge(:user_id => params[:user_id], :rater_id => current_user.id)
     @poll = Poll.new(create_params)
 
     respond_to do |format|
