@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  improvement_recommendation: MyText
+  helpful: false
+
+two:
+  improvement_recommendation: MyText
+  helpful: false
