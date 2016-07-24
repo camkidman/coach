@@ -19,7 +19,7 @@
         <td><%= poll.helpful %></td>
         <td><%= poll.user_id %></td>
         <td><%= link_to 'Show', poll %></td>
-        <td><%= link_to 'Edit', edit_poll_path(poll) %></td>
+        <td><%= link_to 'Edit', edit_user_poll_path(@user, poll) %></td>
         <td><%= link_to 'Destroy', poll, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Poll', new_poll_path %>
+<%= link_to 'New Poll', new_user_poll_path(@user) %>

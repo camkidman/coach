@@ -1,5 +1,6 @@
 class PollsController < ApplicationController
   before_action :set_poll, only: [:show, :edit, :update, :destroy]
+  before_action :set_user
 
   # GET /polls
   # GET /polls.json
@@ -24,11 +25,12 @@ class PollsController < ApplicationController
   # POST /polls
   # POST /polls.json
   def create
-    @poll = Poll.new(poll_params)
+    create_params = poll_params.merge(:user_id => params[:user_id])
+    @poll = Poll.new(create_params)
 
     respond_to do |format|
       if @poll.save
-        format.html { redirect_to @poll, notice: 'Poll was successfully created.' }
+        format.html { redirect_to user_poll_path(@user, @poll), notice: 'Poll was successfully created.' }
         format.json { render :show, status: :created, location: @poll }
       else
         format.html { render :new }
@@ -67,8 +69,12 @@ class PollsController < ApplicationController
       @poll = Poll.find(params[:id])
     end
 
+    def set_user
+      @user = User.find(params[:user_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def poll_params
-      params.require(:poll).permit(:improvement_recommendation, :helpful)
+      params.require(:poll).permit(:improvement_recommendation, :helpful, :user_id)
     end
 end

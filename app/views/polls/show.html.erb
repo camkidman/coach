@@ -10,5 +10,5 @@
   <%= @poll.helpful %>
 </p>
 
-<%= link_to 'Edit', edit_poll_path(@poll) %> |
-<%= link_to 'Back', polls_path %>
+<%= link_to 'Edit', edit_user_poll_path(@user, @poll) %> |
+<%= link_to 'Back', user_polls_path(@user) %>
