@@ -1,0 +1,20 @@
+<h2>Your Dashboard</h2>
+
+<p>Here's what people have to say about you:</p>
+
+<table>
+  <thead>
+    <tr>
+      <td>Feedback</td>
+      <td>Are you helpful?</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @polls.each do |poll| %>
+      <tr>
+        <td><%= poll.improvement_recommendation %></td>
+        <td><%= poll.helpful? ? "Yes!" : "No" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
